@@ -1,0 +1,27 @@
+PROJECT:
+  - activate
+  - create
+  - delete
+  - update:
+    - color
+    - name
+
+------------------------------
+
+TASKS:
+  - create
+  - delete
+  - update:
+    - content
+    - type
+    - position
+
+------------------------------
+
+TAGS:
+
+------------------------------
+
+USERS:
+
+------------------------------
