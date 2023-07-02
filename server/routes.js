@@ -50,6 +50,31 @@ router.get('/initial-load', async (req, res) =>
 
 /********************************************************************************************/
 /*** project routes ***/
+router.post('/project-get', async (req , res) => 
+{
+  const projectIDs = req.body[0];
+  const projectsMeta = await Project.find({ id: { $in: projectIDs } }).lean().select('-created_at -updated_at -_id -__v');
+    
+  await Promise.all (projectsMeta.map(async project => 
+  {
+    if (project.activeTasks === -1)
+    {
+      await Task.countDocuments({ id: { $in: project.tasks }, type: { $in: ['todo', 'doing'] } })
+      .then(async count => 
+      {
+        await Project.updateOne({ id: project.id }, { activeTasks: count });
+        project.activeTasks = count;
+      })
+      .catch( err => {console.log(err)} )
+    }
+
+    delete project.tasks;
+    return project;
+  }));
+
+  res.status(200).send(projectsMeta);
+});
+
 router.post('/project-create', async (req, res) => 
 {
   const project = req.body;
@@ -143,10 +168,24 @@ router.post('/task-delete', async (req, res) =>
 
 /********************************************************************************************/
 /*** user routes ***/
+router.post('/user-login', async (req, res) => 
+{
+  const userEmail = req.body[0];
+  const userPassword = req.body[1];
+
+  const user = await userController.login(userEmail, userPassword);
+
+  if (user !== null)
+    res.status(200).send(user);
+    
+  else
+    res.sendStatus(400);
+});
+
 router.post('/user-create', async (req, res) => 
 {
   const userData = req.body[0];
-  
+
   await userController.create(userData);
   res.sendStatus(201);
 });
@@ -159,6 +198,13 @@ router.post('/user-update', async (req, res) =>
   {
     const [userID, projectID] = [req.body[0], req.body[1]];
     await userController.updateActiveProject(userID, projectID);
+  }
+
+  else if (type === 'projectList')
+  {
+    const method = req.query.method;
+    const [userID, projectID] = [req.body[0], req.body[1]];
+    await userController.updateProjectList(userID, projectID, method);
   }
   
   res.sendStatus(200);

@@ -1247,6 +1247,235 @@
     width: 90%;
   }
 }
+@keyframes fade_in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade_out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes rotate_cw {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate_ccw {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+.login {
+  display: flex;
+  width: 100vw;
+  height: 100dvh;
+  animation: fade_in 0.15s forwards ease-in-out;
+}
+.login__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 48px;
+  width: 420px;
+  height: 100dvh;
+  padding-top: 64px;
+  color: #fff;
+  background-color: hsl(215, 29%, 15%);
+}
+.login__logo {
+  max-width: 320px;
+  margin-bottom: 64px;
+}
+.login__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.login__inputs .login__input {
+  position: relative;
+}
+.login__inputs .fa-envelope, .login__inputs .fa-key {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 1.1rem;
+}
+.login__inputs input {
+  display: block;
+  width: 320px;
+  padding: 12px 16px 12px 40px;
+  border-radius: 3px;
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(215, 29%, 23%);
+}
+.login__inputs input::-moz-placeholder {
+  color: #c0c0c0;
+}
+.login__inputs input::placeholder {
+  color: #c0c0c0;
+}
+.login__auth {
+  width: 320px;
+  padding: 12px 16px;
+  border-radius: 3px;
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(204, 56%, 55%);
+  font-size: 1.2rem;
+}
+.login__auth:hover {
+  background-color: hsl(204, 76%, 62%);
+}
+.login__background {
+  display: grid;
+  place-items: center;
+  width: calc(100% - 420px);
+  height: 100dvh;
+  background: url("/public/img/credentials__bg--dark_theme.png") center center/cover;
+}
+
+@media screen and (max-width: 720px) {
+  .login__form {
+    width: 100vw;
+  }
+  .login__logo, .login__auth, input {
+    max-width: 280px;
+  }
+  .login__background {
+    display: none;
+  }
+}
+@keyframes fade_in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade_out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes rotate_cw {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate_ccw {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+.reg {
+  display: flex;
+  width: 100vw;
+  height: 100dvh;
+  animation: fade_in 0.15s forwards ease-in-out;
+}
+.reg__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 48px;
+  width: 420px;
+  height: 100dvh;
+  padding-top: 64px;
+  color: #fff;
+  background-color: hsl(215, 29%, 15%);
+}
+.reg__logo {
+  position: relative;
+  left: 10px;
+  max-width: 320px;
+  margin-bottom: 64px;
+}
+.reg__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.reg__inputs .reg__input {
+  position: relative;
+}
+.reg__inputs .reg__input--email {
+  margin-bottom: 24px;
+}
+.reg__inputs .fa-user, .reg__inputs .fa-envelope, .reg__inputs .fa-key {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 1.1rem;
+}
+.reg__inputs input {
+  display: block;
+  width: 320px;
+  padding: 12px 16px 12px 40px;
+  border-radius: 3px;
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(215, 29%, 23%);
+}
+.reg__inputs input::-moz-placeholder {
+  color: #c0c0c0;
+}
+.reg__inputs input::placeholder {
+  color: #c0c0c0;
+}
+.reg__auth {
+  width: 320px;
+  padding: 12px 16px;
+  border-radius: 3px;
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(204, 56%, 55%);
+  font-size: 1.2rem;
+}
+.reg__auth:hover {
+  background-color: hsl(204, 76%, 62%);
+}
+.reg__background {
+  display: grid;
+  place-items: center;
+  width: calc(100% - 420px);
+  height: 100dvh;
+  background: url("/public/img/credentials__bg--dark_theme.png") center center/cover;
+}
+
+@media screen and (max-width: 720px) {
+  .reg__form {
+    width: 100vw;
+  }
+  .reg__logo, input {
+    max-width: 280px;
+  }
+  .reg__background {
+    display: none;
+  }
+}
 /***************************************************************************************************************/
 /* global styles */
 * {

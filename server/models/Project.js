@@ -4,8 +4,6 @@ import idSchema from './_id.js';
 const projectSchema = new mongoose.Schema(
 {
   id: idSchema,
-  
-  tasks: [String],
 
   name: 
   { 
@@ -26,6 +24,10 @@ const projectSchema = new mongoose.Schema(
     type: Number,
     default: -1
   },
+
+  tasks: [String],
+
+  users: [String],
 
   created_at:
   {

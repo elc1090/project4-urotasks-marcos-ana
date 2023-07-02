@@ -20,17 +20,13 @@ export default function Confirmation({ confirmFunction })
         console.log(res); 
         setProjects(projects.filter(project => project.id !== activeProject.id));
 
-        axios.post(`${process.env.REACT_APP_SERVER_ROUTE}/user-update?type=activeProject`, [user.id, "0"])
+        axios.post(`${process.env.REACT_APP_SERVER_ROUTE}/user-update?type=projectList&method=delete`, [user.id, activeProject.id])
           .then(res => 
           {
             console.log(res);
             setUser({ ...user, activeProject: "0" });
           })
-          .catch(err => 
-          {
-            console.log(err);
-            setUser({ ...user, activeProject: activeProject.id })
-          }) 
+          .catch( err => {console.log(err)} )
       })
       .catch(err => 
       {

@@ -1,6 +1,6 @@
 /** dependencies **/
 import React, { useState, useEffect, useReducer } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 import './css/app.css';
@@ -19,7 +19,10 @@ export const ReducerContext = React.createContext();
 
 export default function App() 
 {
-  const [loading, setLoading] = useState(true);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
   const [fetchTasks, setFetchTasks] = useState(true);
 
   const [user, setUser] = useState(null);
@@ -39,21 +42,26 @@ export default function App()
 
     else
       setActiveProject(null);
-      
   }, [user, projects]);
 
   useEffect(() => 
   {
-    axios.get(`${process.env.REACT_APP_SERVER_ROUTE}/initial-load`)
-      .then(res => {setUser(res.data[0]); setProjects(res.data[1]); setLoading(false)})
-      .catch(err => {console.log(err)})
-  }, [])
+    if (user === null && location.pathname !== '/register')
+      navigate('/login')
+
+    else if (user !== null && projects.length === 0)
+    {
+      axios.post(`${process.env.REACT_APP_SERVER_ROUTE}/project-get`, [user.projects])
+      .then(res => setProjects(res.data))
+      .catch(err => console.log(err))
+    }
+  }, [user])
 
   const [state, dispatch] = useReducer(reducer, 
   {
-    isMenuHidden: true,
-    isDashboardMoved: true,
-    isSearchbarSpaced: true,
+    isMenuHidden: false,
+    isDashboardMoved: false,
+    isSearchbarSpaced: false,
     isProjCreatorShown: false,
     isConfirmationShown: false
   });
@@ -86,7 +94,7 @@ export default function App()
                 <Route path='/settings' element={ <SettingsPage/> }/>
       
                 <Route path='/404' element={ <NotFoundPage/> }/>
-                <Route path='*' element={ <Navigate to='/404'/> }/>
+                <Route path='*' element={ <useNavigate to='/404'/> }/>
               </Routes>
             </FlagsContext.Provider>
           </ReducerContext.Provider>
