@@ -1,5 +1,8 @@
 @import '../../css/_variables.scss';
 
+$wd: 320px;
+$wm: 280px;
+
 .login
 {
   display: flex;
@@ -27,7 +30,7 @@
 
   &__logo
   {
-    max-width: 320px;
+    max-width: $wd;
     margin-bottom: 64px;
   }
   
@@ -55,7 +58,7 @@
     {
       display: block;
 
-      width: 320px;
+      width: $wd;
       padding: 12px 16px 12px 40px;
       border-radius: $bd-rad-small;
 
@@ -67,9 +70,23 @@
     }
   }
 
+  &__navigate
+  {
+    width: $wd;
+
+    color: $white-dark;
+
+    cursor: pointer;
+    text-align: left;
+    text-decoration: underline;
+
+    &:hover
+    { color: $white-light; }
+  }
+
   &__auth
   {
-    width: 320px;
+    width: $wd;
     padding: 12px 16px;
     border-radius: $bd-rad-small;
 
@@ -99,9 +116,12 @@
   .login__form
   { width: 100vw; }
 
-  .login__logo, .login__auth, input
-  { max-width: 280px; }
-
   .login__background
   { display: none; }
+
+  input,
+  .login__logo,
+  .login__auth, 
+  .login__navigate
+  { max-width: $wm; }
 }

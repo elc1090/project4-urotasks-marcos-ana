@@ -59,7 +59,7 @@ export default function LoginForm()
             <input type="password" ref={ passwordRef } name="password" id="password" placeholder="password" />
           </div>
 
-
+          <p className='login__navigate' onClick={ () => {navigate('/register')} }>Not registed yet? Click me</p>
         </div>
 
         <button className="login__auth" onClick={ login }>LOGIN</button>
