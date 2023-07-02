@@ -1329,6 +1329,16 @@
 .login__inputs input::placeholder {
   color: #c0c0c0;
 }
+.login__navigate {
+  width: 320px;
+  color: hsl(0, 0%, 86%);
+  cursor: pointer;
+  text-align: left;
+  text-decoration: underline;
+}
+.login__navigate:hover {
+  color: hsl(0, 0%, 100%);
+}
 .login__auth {
   width: 320px;
   padding: 12px 16px;
@@ -1352,11 +1362,14 @@
   .login__form {
     width: 100vw;
   }
-  .login__logo, .login__auth, input {
-    max-width: 280px;
-  }
   .login__background {
     display: none;
+  }
+  input,
+  .login__logo,
+  .login__auth,
+  .login__navigate {
+    max-width: 280px;
   }
 }
 @keyframes fade_in {
