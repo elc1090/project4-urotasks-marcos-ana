@@ -6,6 +6,7 @@ Task manager inspirado no Trello só que mais focado e mais organizado
 
 #### Deploy
 [Link do deploy](https://urotasks.onrender.com/)
+[Link do formulário de teste](https://forms.gle/TVMyCyWeP3BHWwhU7)
 - É normal demorar muito tempo pra fazer login após clicar no botão, o servidor é beeem lento.
 
 #### Desenvolvedor(es)
