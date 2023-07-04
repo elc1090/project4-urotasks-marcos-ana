@@ -73,7 +73,7 @@
     {
       position: relative;
       padding: 10px 14px;
-      border-radius: $bd-rad-small;
+      border-radius: $br-small;
 
       color: #fff;
 
@@ -114,7 +114,7 @@
     width: 320px;
     padding: 12px;
 
-    border-radius: $bd-rad-small;
+    border-radius: $br-small;
     border: 2px solid $white-dark;
     background-color: $bg-blue-mid;
     
@@ -144,7 +144,7 @@
       .btn--confirmation
       {
         padding: 8px;
-        border-radius: $bd-rad-small;
+        border-radius: $br-small;
 
         cursor: pointer;
       }

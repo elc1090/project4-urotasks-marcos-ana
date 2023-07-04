@@ -2,7 +2,6 @@ import express from 'express';
 
 import Project from './models/Project.js';
 import Task from './models/Task.js';
-import User from './models/User.js';
 
 import projectController from './controllers/projectController.js'
 import taskController from './controllers/taskController.js';
@@ -12,41 +11,9 @@ const router = express.Router();
 
 /********************************************************************************************/
 /*** general routes ***/
-router.get('/initial-load', async (req, res) =>  
-{
-  try
-  {
-    const user = await User.findOne({ id: "1d33e9a5-697b-4d80-b2fb-d854fb2f7fa2" });
-    const projectsMeta = await Project.find().lean().select('-created_at -updated_at -_id -__v');
-    
-    await Promise.all (projectsMeta.map(async project => 
-    {
-      if (project.activeTasks === -1)
-      {
-        await Task.countDocuments({ id: { $in: project.tasks }, type: { $in: ['todo', 'doing'] } })
-        .then(async count => 
-        {
-          await Project.updateOne({ id: project.id }, { activeTasks: count });
-          project.activeTasks = count;
-        })
-        .catch( err => {console.log(err)} )
-      }
-
-      delete project.tasks;
-      return project;
-    }))
-    
-    const data = [user, projectsMeta];
-
-    res.status(200).send(data);
-    console.log(`${new Date()}: successfully sent data to client`)
-  }
-  catch (err)
-  {
-    console.log(err);
-    res.status(500).send("Internal server error");
-  }
-});
+router.get('/login', async (req, res) => {res.redirect('/login')});
+router.get('/register', async (req, res) => {res.redirect('/register')});
+router.get('/settings', async (req, res) => {res.redirect('/settings')});
 
 /********************************************************************************************/
 /*** project routes ***/
@@ -179,7 +146,7 @@ router.post('/user-login', async (req, res) =>
     res.status(200).send(user);
     
   else
-    res.sendStatus(400);
+    res.status(400).send('Invalid email or password, make sure to type them correctly!');
 });
 
 router.post('/user-create', async (req, res) => 

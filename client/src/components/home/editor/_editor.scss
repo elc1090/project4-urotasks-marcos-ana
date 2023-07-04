@@ -30,7 +30,7 @@
 
   position: absolute;
   height: fit-content;
-  border-radius: $bd-rad-small;
+  border-radius: $br-small;
 
   color: #fff;
   background-color: $bg-blue-light;
@@ -49,7 +49,7 @@
     width: 100%;
     padding: 12px;
     margin-bottom: -4px;
-    border-radius: $bd-rad-small;
+    border-radius: $br-small;
 
     color: inherit;
     background-color: inherit;
@@ -79,7 +79,7 @@
       position: relative;
       width: 42px;
       height: 42px;
-      border-radius: $bd-rad-small; 
+      border-radius: $br-small; 
 
       color: $bg-blue-dark;
       background-color: $white-dark;
@@ -96,12 +96,12 @@
       &--position
       { 
         &--up
-        { border-radius: $bd-rad-small $bd-rad-small 0 0; }
+        { border-radius: $br-small $br-small 0 0; }
 
         &--down
         {
           margin-top: -4px;
-          border-radius: 0 0 $bd-rad-small $bd-rad-small;
+          border-radius: 0 0 $br-small $br-small;
         }
       }
 
@@ -138,7 +138,7 @@
       
       padding: 8px;
       border: 2px solid $white-dark;
-      border-radius: $bd-rad-big;
+      border-radius: $br-big;
 
       background-color: $bg-blue-mid;
 
@@ -167,7 +167,7 @@
       display: grid;
       place-items: center;
 
-      border-radius: $bd-rad-small;
+      border-radius: $br-small;
 
       color: $bg-blue-dark;
       background-color: $white-dark;
@@ -179,7 +179,7 @@
     &__submit
     {
       left: 0px;
-      border-radius: $bd-rad-small;
+      border-radius: $br-small;
 
       color: #fff;
       background-color: $blue-dark;
