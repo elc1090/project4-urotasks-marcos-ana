@@ -5,7 +5,8 @@
 Task manager inspirado no Trello só que mais focado e mais organizado
 
 #### Deploy
-[Link do deploy](https://urotasks.onrender.com/)
+- [Link do deploy](https://urotasks.onrender.com/)
+- [Link do formulário de teste](https://forms.gle/TVMyCyWeP3BHWwhU7)
 
 #### Desenvolvedor(es)
 - Marcos Eduardo Mori Kaminski
