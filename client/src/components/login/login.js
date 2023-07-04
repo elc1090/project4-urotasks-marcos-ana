@@ -1,7 +1,9 @@
-import { useContext, useRef } from 'react';
+import { useState, useContext, useRef } from 'react';
 import { UserContext } from '../../app';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
+import { Error } from '../utils/popups/popups';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faKey } from '@fortawesome/free-solid-svg-icons';
@@ -11,6 +13,7 @@ export default function LoginForm()
   const navigate = useNavigate();
 
   const { setUser } = useContext(UserContext);
+  const [error, setError] = useState(null);
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -37,9 +40,16 @@ export default function LoginForm()
     axios.post(`${process.env.REACT_APP_SERVER_ROUTE}/user-login`, [email, password])
       .then(res => 
       {
-        console.log(res.data);
         setUser(res.data);
         navigate('/');
+      })
+      .catch(err => 
+      {
+        if (err.response)
+          setError(err.response.data);
+
+        else
+          setError("Unable to communicate with server")
       })
   }
 
@@ -68,6 +78,8 @@ export default function LoginForm()
       <div className="login__background">
         <img src="img/loading.svg" alt="" />
       </div>
+
+      <Error header="Failed to login" error={ error } setError={ setError }/>
     </div>
   )
 }

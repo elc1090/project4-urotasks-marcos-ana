@@ -7,6 +7,7 @@ $wm: 280px;
 {
   display: flex;
 
+  position: relative;
   width: 100vw;
   height: 100dvh;
 
@@ -60,7 +61,7 @@ $wm: 280px;
 
       width: $wd;
       padding: 12px 16px 12px 40px;
-      border-radius: $bd-rad-small;
+      border-radius: $br-small;
 
       color: $white-light;
       background-color: $bg-blue-light;
@@ -88,7 +89,7 @@ $wm: 280px;
   {
     width: $wd;
     padding: 12px 16px;
-    border-radius: $bd-rad-small;
+    border-radius: $br-small;
 
     color: $white-light;
     background-color: $blue-dark;

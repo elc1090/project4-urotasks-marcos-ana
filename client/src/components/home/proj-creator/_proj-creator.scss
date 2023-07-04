@@ -40,7 +40,7 @@
 
   min-width: 320px;
   padding: 16px;
-  border-radius: $bd-rad-big;
+  border-radius: $br-big;
 
   color: white;
   background-color: $bg-blue-light;
@@ -73,7 +73,7 @@
   &__input
   {
     padding: 8px;
-    border-radius: $bd-rad-small;
+    border-radius: $br-small;
   }
 
   #input-2
@@ -107,7 +107,7 @@
 
     margin-top: 8px;
     padding: 8px;
-    border-radius: $bd-rad-small;
+    border-radius: $br-small;
 
     background-color: $green-dark;
 

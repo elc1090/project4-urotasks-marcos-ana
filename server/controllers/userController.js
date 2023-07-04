@@ -1,3 +1,5 @@
+import bcrypt from 'bcrypt';
+
 import User from '../models/User.js'
 const userController = {};
 
@@ -5,9 +7,10 @@ const userController = {};
 userController.login = async (userEmail, userPassword) => 
 {
   const user = await User.findOne({ email: userEmail });
+  if (user === null) return null;
 
-  if (user.password !== userPassword)
-    return null;
+  const match = await bcrypt.compare(userPassword, user.password);
+  if (!match) return null;
 
   return user;
 }
@@ -15,7 +18,8 @@ userController.login = async (userEmail, userPassword) =>
 /*****************************************************************************************************************/
 userController.create = async (userData) => 
 {
-  const user = new User(userData);
+  const hash = await bcrypt.hash(userData.password, 10);
+  const user = new User({ ...userData, password: hash });
   user.save();
 
   console.log(`${new Date()}: successfully created user ${user.name}`);
