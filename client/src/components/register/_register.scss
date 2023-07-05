@@ -45,7 +45,7 @@
       position: relative; 
 
       &--email
-      { margin-bottom: 24px; }
+      { margin-bottom: 12px; }
     }
 
 
@@ -72,6 +72,20 @@
       &::placeholder
       { color: #c0c0c0; }
     }
+  }
+
+  &__navigate
+  {
+    width: $wd;
+
+    color: $white-dark;
+
+    cursor: pointer;
+    text-align: left;
+    text-decoration: underline;
+
+    &:hover
+    { color: $white-light; }
   }
 
   &__auth

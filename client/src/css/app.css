@@ -1438,7 +1438,7 @@
   position: relative;
 }
 .reg__inputs .reg__input--email {
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
 .reg__inputs .fa-user, .reg__inputs .fa-envelope, .reg__inputs .fa-key {
   position: absolute;
@@ -1459,6 +1459,16 @@
 }
 .reg__inputs input::placeholder {
   color: #c0c0c0;
+}
+.reg__navigate {
+  width: 320px;
+  color: hsl(0, 0%, 86%);
+  cursor: pointer;
+  text-align: left;
+  text-decoration: underline;
+}
+.reg__navigate:hover {
+  color: hsl(0, 0%, 100%);
 }
 .reg__auth {
   width: 320px;

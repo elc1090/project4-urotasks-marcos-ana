@@ -1,14 +1,17 @@
-import { useContext, useEffect, useReducer, useRef } from 'react';
+import { useContext, useEffect, useReducer, useRef, useState } from 'react';
 import { UserContext } from '../../app';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import axios from 'axios';
+
+import { Error } from '../utils/popups/popups';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope, faKey } from '@fortawesome/free-solid-svg-icons';
 
 export default function RegForm()
 {
+  const [error, setError] = useState(null);
   const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -28,25 +31,25 @@ export default function RegForm()
 
     if (name === '' || email === '' || password === '' || passwordConfirm === '')
     {
-      console.log('Make sure to fill in all the necessary data');
+      setError('Make sure to fill in all the necessary data');
       return;
     }
       
+    if (!emailRegex.test(email))
+    {
+      setError('Make sure you email is in the correct format')
+      return;
+    }
+
     if (password !== passwordConfirm)
     {
-      console.log('Make sure both password fields match')
+      setError('Make sure both password fields match')
       return;
     }
 
     if (password.length < 8)
     {
-      console.log('Your password must be atleast 8 characters long');
-      return;
-    }
-
-    if (!emailRegex.test(email))
-    {
-      console.log('Make sure you email is in the correct format')
+      setError('Your password must be atleast 8 characters long');
       return;
     }
     
@@ -63,11 +66,17 @@ export default function RegForm()
     axios.post(`${process.env.REACT_APP_SERVER_ROUTE}/user-create`, [newUser])
       .then(res => 
       {
-        console.log(res);
         setUser(newUser);
         navigate('/');
       })
-      .catch(err => {console.log(err)})
+      .catch(err => 
+      {
+        if (err.response)
+          setError(err.response.data);
+
+        else
+          setError("Unable to communicate with server")
+      })
   }
 
   return (
@@ -96,6 +105,7 @@ export default function RegForm()
             <input type="password" ref={ passwordConfirmRef } name="password" id="password" placeholder="Confirm your password" />
           </div>
 
+          <p className='reg__navigate' onClick={ () => {navigate('/login')} }>Have an account already? Click me.</p> 
         </div>
 
         <button className="reg__auth" onClick={ register }>REGISTER</button>
@@ -104,6 +114,8 @@ export default function RegForm()
       <div className="reg__background">
         <img src="img/loading.svg" alt="" />
       </div>
+
+      <Error header="Failed to register user" error={ error } setError={ setError }/>
     </div>
   )
 }

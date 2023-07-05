@@ -27,13 +27,13 @@ export default function LoginForm()
 
     if (email === '' || !emailRegex.test(email))
     {
-      console.log('Fill your email correctly')
+      setError('Email format not accepted')
       return;
     }
     
     if (password === '' || password.length < 8)
     {
-      console.log('Fill your password correctly')
+      setError('Your password must be atleast 8 characters long')
       return;
     }
 
