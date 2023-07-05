@@ -7,7 +7,7 @@ export function Error({ header, error, setError })
 {
   useEffect(() => 
   {
-    const timer = setTimeout(() => {setError(null);}, 5000);
+    const timer = setTimeout(() => {setError(null)}, 5000);
     return () => {clearTimeout(timer)};
   }, [error]);
 
@@ -29,7 +29,7 @@ export function Confirmation({ header, confirmation, setConfirmation })
 {
   useEffect(() => 
   {
-    const timer = setTimeout(() => {setError(null);}, 5000);
+    const timer = setTimeout(() => {setConfirmation(null)}, 5000);
     return () => {clearTimeout(timer)};
   }, [confirmation]);
 
