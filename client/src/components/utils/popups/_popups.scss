@@ -89,3 +89,12 @@
     font-size: 0.9rem;
   }
 }
+
+@media screen and (max-width: 420px) 
+{
+  .popup
+  {
+    width: calc(100% - 32px);
+    left: 16px;
+  }  
+}

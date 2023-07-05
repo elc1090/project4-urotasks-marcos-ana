@@ -1299,6 +1299,8 @@
   background-color: hsl(215, 29%, 15%);
 }
 .login__logo {
+  position: relative;
+  left: 10px;
   max-width: 320px;
   margin-bottom: 64px;
 }
@@ -1595,6 +1597,12 @@
   font-size: 0.9rem;
 }
 
+@media screen and (max-width: 420px) {
+  .popup {
+    width: calc(100% - 32px);
+    left: 16px;
+  }
+}
 /***************************************************************************************************************/
 /* global styles */
 * {

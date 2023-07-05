@@ -105,7 +105,7 @@ export default function RegForm()
             <input type="password" ref={ passwordConfirmRef } name="password" id="password" placeholder="Confirm your password" />
           </div>
 
-          <p className='reg__navigate' onClick={ () => {navigate('/login')} }>Have an account already? Click me.</p> 
+          <p className='reg__navigate' onClick={ () => {navigate('/login')} }>Have an account already? Click me</p> 
         </div>
 
         <button className="reg__auth" onClick={ register }>REGISTER</button>

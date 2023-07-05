@@ -31,6 +31,9 @@ $wm: 280px;
 
   &__logo
   {
+    position: relative;
+    left: 10px;
+
     max-width: $wd;
     margin-bottom: 64px;
   }

@@ -1,5 +1,8 @@
 @import '../../css/_variables.scss';
 
+$wd: 320px;
+$wm: 280px;
+
 .reg
 {
   display: flex;
@@ -30,7 +33,7 @@
     position: relative;
     left: 10px;
 
-    max-width: 320px;
+    max-width: $wd;
     margin-bottom: 64px;
   }
   
@@ -62,7 +65,7 @@
     {
       display: block;
 
-      width: 320px;
+      width: $wd;
       padding: 12px 16px 12px 40px;
       border-radius: $br-small;
 
@@ -90,7 +93,7 @@
 
   &__auth
   {
-    width: 320px;
+    width: $wd;
     padding: 12px 16px;
     border-radius: $br-small;
 
@@ -121,7 +124,7 @@
   { width: 100vw; }
 
   .reg__logo, input
-  { max-width: 280px; }
+  { max-width: $wm; }
 
   .reg__background
   { display: none; }
